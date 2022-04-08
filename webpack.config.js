@@ -7,15 +7,15 @@ module.exports = {
     mode: "development", 
     entry: "./src/index.js", 
     output: {
-        filename: "[name].bundle.js", 
+        filename: "main.bundle.js", 
         path: path.resolve(__dirname, "bundle")
     }, 
 
     plugins:[
         new CleanWebpackPlugin(), 
-        new MiniCssExtractPlugin({filename: "[name].bundle.css"}), 
+        new MiniCssExtractPlugin({filename: "main.bundle.css"}), 
         new HtmlWebpackPlugin({
-            template: "./src//index.html", 
+            template: "./src/index.html", 
         }), 
     ], 
 
@@ -58,19 +58,7 @@ module.exports = {
             }, 
 
             {
-                test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
-                use:
-                {
-                    loader: "file-loader", 
-                    options:
-                    {
-                        name:"[name].[ext]"
-                    }, 
-                }, 
-            }, 
-
-            {
-                test: /\.(png | jpe?g | gif)$/i, 
+                test: /\.(png|jpe?g|gif)$/i, 
                 use:
                 [
                     {
