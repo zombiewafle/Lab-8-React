@@ -5,10 +5,8 @@ import App from "./App.js";
 import  "./index.css";
 
 ReactDOM.render(
-    <>
-        <div>
-            <App/>
-        </div>
-    </>,
+
+    <App/>, 
+    
     document.getElementById("root")
 );

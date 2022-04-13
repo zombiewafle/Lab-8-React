@@ -1,28 +1,40 @@
 import React from "react";
 import { useEffect, useState } from "react";
-
+import "../App.js";
 
 //Images import
 import back from "../images/backSide.jpg";
+import "./cards.css"
 
-const card = ({onclick, card, index, isInactive, isFlipped, isDisable}) => {
-    const handleClick = () => {
-        !isFlipped && !isDisable && onclick(index);
+
+
+function CardFunction({card, choiceCard, isFlipped, disable}){
+
+    const clickCard = () =>{
+        if(!disable){
+            choiceCard(card);
+        }
+        
     };
 
     return (
-        <><div className={classnames("card", {
-            "is-flipped": isFlipped,
-            "is-inactive": isInactive
-        })}
-            onClick={handleClick}
-        >
-            </div><div className="card-face card-front-face">
-                <img src={back} alt="front face"></img>
-            </div><div className="card-face card-back-face">
-                <img src={card.image} alt="back face"></img>
-            </div></>
-    );
-};
+        //Functionalities of the cards, back and front side
+        <div className="card" >
+            <div className={isFlipped ? "isFlipped":""}>
+                <img 
+                    src={card.src} 
+                    className = "front">
+                </img>
 
-export default card
+                <img 
+                    src={back} 
+                    className = "back" 
+                    onClick={clickCard}
+                ></img>
+            </div>
+        </div>
+    );
+}
+
+
+export default CardFunction;
